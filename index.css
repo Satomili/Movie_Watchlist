@@ -34,3 +34,39 @@ a {
     font-weight: bold;
 }
 
+/* search container */
+
+#search-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2E2E2F;
+    align-items: center;
+    border-radius: 6px;
+    width: 400px;
+    margin: auto;
+}
+
+#search-container i {
+    color: #9CA3AF;
+    font-size: 1em;
+    padding: 10px;
+} 
+
+#search-container input {
+    border: none;
+    background-color: #2E2E2F;
+    margin-right: auto;
+    width: 90%;
+    color: white;
+}
+
+#search-container button {
+    border: none;
+    background-color: #4b4b4b;
+    padding: 10px 40px;
+    border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    color: white;
+}
+
