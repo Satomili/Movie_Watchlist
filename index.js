@@ -48,6 +48,29 @@ searchButton.addEventListener('click', async ()=> {
 </div>
             `
     }
+
+    document.addEventListener('click', function(e) {
+        const addButton = e.target.closest("#add-button")
+        if(addButton) {
+            const selectedMovie = addButton.closest("#movie-list")
+            const selectedMovieIndex = Array.from(selectedMovie.parentNode.children).indexOf(selectedMovie)
+            const selectedMovieData = movieArray[selectedMovieIndex]
+            let isAdded = false
+            
+            for(let movie of myWatchlist) {
+                if(movie.imdbID === selectedMovieData.imdbID) {
+                    isAdded = true
+                }
+            }
+                
+            if(!isAdded) {
+                myWatchlist.push(selectedMovieData)
+                localStorage.setItem("myWatchlist", JSON.stringify(myWatchlist))
+            } else {
+                console.log("this movie is already in your watchilist!")
+            }
+        }
+    })
     
     movielistContainer.innerHTML = movieHtml
 })
