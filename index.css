@@ -71,7 +71,7 @@ a {
     color: white;
 }
 
-/* movielist-container */
+/* msg (in movielist container and watchlist container) */
 
 .msg {
     display: flex;
