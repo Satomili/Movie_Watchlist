@@ -48,6 +48,21 @@ async function renderMyWatchlist() {
     }
 }
 
+document.addEventListener('dblclick', function(e) {
+    const removeButton = e.target.closest("#remove-button");
+    if (removeButton) {
+        const selectedMovie = removeButton.closest("#movie-list");
+        if (selectedMovie) {
+            const selectedMovieIndex = Array.from(selectedMovie.parentNode.children).indexOf(selectedMovie);
+            if (selectedMovieIndex !== -1) {
+                myWatchlist.splice(selectedMovieIndex, 1);
+                localStorage.setItem("myWatchlist", JSON.stringify(myWatchlist));
+                renderMyWatchlist();
+            }
+        }
+    }
+})
+
 async function getMovieDetails(ID) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${ID}&plot=short&r=json`)
     const data = await response.json()
