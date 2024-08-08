@@ -48,7 +48,7 @@ searchButton.addEventListener('click', async ()=> {
 </div>
             `
     }
-
+    
     document.addEventListener('click', function(e) {
         const addButton = e.target.closest("#add-button")
         if(addButton) {
@@ -80,3 +80,4 @@ async function getMovieDetails(ID) {
     const data = await response.json()
     return data
 }
+
