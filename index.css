@@ -107,3 +107,62 @@ a {
 #watchlist-add-button p {
     margin: 0;
 }
+
+/* movielist in movielist container & watchlist container */
+
+#movie-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 460px;
+    gap: 20px;
+    margin: 20px auto;
+    color: white;
+}
+
+.movie-poster {
+    width: 99px;
+    height: 147.41px;
+}
+
+#movie-info-one {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.movie-title {
+    margin: 10px 0;
+    font-size: 1.125em;
+    max-width: 290px;
+    font-weight: 500;
+}
+
+#movie-info-two {
+    display: flex;
+    justify-content: space-between;
+}
+
+#movie-list p {
+    font-size: 0.65em;
+    margin: 7px 0;
+}
+
+.movie-plot {
+    font-size: 0.875em;
+    color: #a5a5a5;
+    max-width: 400px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    background-color: #121212;
+    border: none;
+    color: white;
+    gap: 5px;
+}
+
+hr{
+    max-width: 460px;
+}
