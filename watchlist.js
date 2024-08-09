@@ -10,7 +10,7 @@ async function renderMyWatchlist() {
         const movieDetails = await getMovieDetails(movie.imdbID)
         
         myWatchlistHtml += `
-<div id="movie-list">
+<div id="movie-list" data-imdbid="${movie.imdbID}">
     <img class="movie-poster" src="${movie.Poster}">
     <div id="movie-info">
         <div id="movie-info-one">
