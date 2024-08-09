@@ -15,7 +15,7 @@ async function renderMyMovieWatchlist() {
     <div id="movie-info">
         <div id="movie-info-one">
             <h2 class="movie-title">${movie.Title}</h2>
-            <p class="movie-imdbRating">⭐ ${movieDetails.imdbRating}</p>
+            <p class="movie-imdbRating"><i class="fa-solid fa-star star-icon"></i> ${movieDetails.imdbRating}</p>
         </div>
         <div id="movie-info-two">
             <p class="movie-runtime">${movieDetails.Runtime}</p>

@@ -138,6 +138,10 @@ a {
     font-weight: 500;
 }
 
+.star-icon {
+    color: #FEC654;
+}
+
 #movie-info-two {
     display: flex;
     justify-content: space-between;
