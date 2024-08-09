@@ -1,15 +1,15 @@
 let watchlistContainer = document.getElementById("watchlist-container")
 const apiKey = "5d1ecff"
-let myWatchlist = JSON.parse(localStorage.getItem("myWatchlist")) || [];
+let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
 
-async function renderMyWatchlist() {
-    let myWatchlistHtml = ""
+async function renderMyMovieWatchlist() {
+    let myMovieWatchlistHtml = ""
     
-    if(myWatchlist.length > 0) {
-        for (let movie of myWatchlist) {
+    if(myMovieWatchlist.length > 0) {
+        for (let movie of myMovieWatchlist) {
         const movieDetails = await getMovieDetails(movie.imdbID)
         
-        myWatchlistHtml += `
+        myMovieWatchlistHtml += `
 <div id="movie-list" data-imdbid="${movie.imdbID}">
     <img class="movie-poster" src="${movie.Poster}">
     <div id="movie-info">
@@ -32,7 +32,7 @@ async function renderMyWatchlist() {
         `
         }
     } else {
-        myWatchlistHtml = `
+        myMovieWatchlistHtml = `
 <div class="msg">
     <h2>Your watchlist is looking a little empty...</h2>
     <a href="index.html"><div id="watchlist-add-button">
@@ -44,7 +44,7 @@ async function renderMyWatchlist() {
     }
     
     if (watchlistContainer) {
-        watchlistContainer.innerHTML = myWatchlistHtml;
+        watchlistContainer.innerHTML = myMovieWatchlistHtml;
     }
 }
 
@@ -55,9 +55,9 @@ document.addEventListener('dblclick', function(e) {
         if (selectedMovie) {
             const selectedMovieIndex = Array.from(selectedMovie.parentNode.children).indexOf(selectedMovie);
             if (selectedMovieIndex !== -1) {
-                myWatchlist.splice(selectedMovieIndex, 1);
-                localStorage.setItem("myWatchlist", JSON.stringify(myWatchlist));
-                renderMyWatchlist();
+                myMovieWatchlist.splice(selectedMovieIndex, 1);
+                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist));
+                renderMyMovieWatchlist();
             }
         }
     }
@@ -69,4 +69,4 @@ async function getMovieDetails(ID) {
     return data
 }
 
-renderMyWatchlist()
+renderMyMovieWatchlist()

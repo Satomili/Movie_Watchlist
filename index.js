@@ -3,8 +3,9 @@ const searchButton = document.getElementById("search-button")
 let movielistContainer = document.getElementById("movielist-container")
 const searchContainer = document.getElementById("search-container")
 const apiKey = "5d1ecff"
-let myWatchlist = JSON.parse(localStorage.getItem("myWatchlist")) || [];
+let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
 let movieArray = []
+console.log(myMovieWatchlist)
 
 searchButton.addEventListener('click', async ()=> {
     const inputValue = searchInput.value
@@ -13,7 +14,6 @@ searchButton.addEventListener('click', async ()=> {
         
     movieArray = data.Search
     let movieHtml = ""
-    console.log(movieArray)
     
     if(movieArray) {
         for (let movie of movieArray) {
@@ -54,26 +54,23 @@ searchButton.addEventListener('click', async ()=> {
     movielistContainer.innerHTML = movieHtml
 })
 
-document.addEventListener('click', function (e) {
+document.addEventListener('click', function(e) {
     const addButton = e.target.closest("#add-button");
     if (addButton) {
-        const selectedMovie = addButton.closest("#movie-list");
-        const imdbID = selectedMovie.getAttribute("data-imdbid");
-        console.log(imdbID)
-        const selectedMovieData = movieArray.find(movie => movie.imdbID === imdbID);
-        console.log(selectedMovieData)
-        let isAdded = false;
+        const selectedMovie = addButton.closest("#movie-list")
+        const imdbID = selectedMovie.getAttribute("data-imdbid")
+        const selectedMovieData = movieArray.find((movie) => movie.imdbID === imdbID)
+        let isAdded = false
 
-        for (let movie of myWatchlist) {
-            if (movie.imdbID === selectedMovieData.imdbID) {
-                isAdded = true;
+        for (let movie of myMovieWatchlist) {
+            if (movie.imdbID === imdbID) {
+                isAdded = true
             }
         }
 
         if (!isAdded) {
-            myWatchlist.push(selectedMovieData);
-            localStorage.setItem("myWatchlist", JSON.stringify(myWatchlist));
-            console.log(myWatchlist)
+            myMovieWatchlist.push(selectedMovieData)
+            localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist))
         } else {
             console.log("This movie is already in your watchlist!");
         }
