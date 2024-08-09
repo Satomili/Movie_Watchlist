@@ -166,3 +166,8 @@ button {
 hr{
     max-width: 460px;
 }
+
+#movielist-container hr:last-child,
+#watchlist-container hr:last-child {
+    display: none;
+}
