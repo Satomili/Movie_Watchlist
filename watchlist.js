@@ -48,7 +48,7 @@ async function renderMyMovieWatchlist() {
     }
 }
 
-document.addEventListener('dblclick', function(e) {
+document.addEventListener('click', function(e) {
     const removeButton = e.target.closest("#remove-button");
     if (removeButton) {
         const selectedMovie = removeButton.closest("#movie-list");
