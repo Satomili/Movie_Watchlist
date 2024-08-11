@@ -1,13 +1,15 @@
 const searchInput = document.getElementById("search-input")
-const searchButton = document.getElementById("search-button")
+const searchForm = document.getElementById("search-container")
 let movielistContainer = document.getElementById("movielist-container")
 const searchContainer = document.getElementById("search-container")
 const apiKey = "5d1ecff"
 let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
 let movieArray = []
 
-searchButton.addEventListener('click', async ()=> {
-    const inputValue = searchInput.value
+searchForm.addEventListener('submit', async (e)=> {
+    e.preventDefault()
+    const inputValue = searchInput.value.trim()
+
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${inputValue}`)
     const data = await response.json()
         
