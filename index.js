@@ -5,7 +5,6 @@ const searchContainer = document.getElementById("search-container")
 const apiKey = "5d1ecff"
 let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
 let movieArray = []
-console.log(myMovieWatchlist)
 
 searchButton.addEventListener('click', async ()=> {
     const inputValue = searchInput.value
