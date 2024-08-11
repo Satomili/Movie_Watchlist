@@ -82,12 +82,21 @@ document.addEventListener('click', function(e) {
 
 function showNotification(message) {
     const notification = document.getElementById('notification');
-    notification.textContent = message;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fa-solid fa-check"></i>
+            <div class="notification-msg">
+                <h3>${message}</h3>
+                <p>Check your watchlist from <b><a href="watchlist.html">here</a></b></p>
+            </div>
+        </div>
+    `
+
     notification.classList.add('show');
 
     setTimeout(() => {
         notification.classList.remove('show');
-    }, 3000); // Hide after 3 seconds
+    }, 3000)
 }
 
 async function getMovieDetails(ID) {

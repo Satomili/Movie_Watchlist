@@ -75,7 +75,14 @@ async function getMovieDetails(ID) {
 
 function showNotification(message) {
     const notification = document.getElementById('notification');
-    notification.textContent = message;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fa-solid fa-check"></i>
+            <div class="notification-msg">
+                <h3>${message}</h3>
+            </div>
+        </div>
+    `
     notification.classList.add('show');
 
     setTimeout(() => {
