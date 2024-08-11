@@ -260,12 +260,11 @@ hr{
     }
 
     #movielist-container .msg {
-        /* border: 1px solid yellow; */
         position: absolute;
         width: 100%;
     }
 
-    hr {
+    #movielist-container hr {
         display: none;
     }
 
