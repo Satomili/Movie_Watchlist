@@ -197,6 +197,13 @@ hr{
         font-weight: bold;
     }
 
+    #movie-list {
+        max-width: 500px;
+    }
+
+    hr {
+        max-width: 500px;
+    }
 
 }
 
@@ -210,6 +217,38 @@ hr{
 
     hr {
         display: none;
+    }
+
+    .movie-poster {
+        width: 150px;
+        height: 100%;
+    }
+    
+    .movie-title {
+        margin: 10px 0;
+        font-size: 1.3em;
+        max-width: 290px;
+        font-weight: 500;
+    }
+    
+    #movie-list p {
+        font-size: 0.65em;
+        margin: 7px 0;
+    }
+    
+    .movie-plot {
+        font-size: 0.875em;
+        color: #a5a5a5;
+        max-width: 400px;
+    }
+    
+    button {
+        display: flex;
+        align-items: center;
+        background-color: #121212;
+        border: none;
+        color: white;
+        gap: 5px;
     }
 }
 
