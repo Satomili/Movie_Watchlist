@@ -18,10 +18,11 @@ searchButton.addEventListener('click', async ()=> {
     if(movieArray) {
         for (let movie of movieArray) {
         const movieDetails = await getMovieDetails(movie.imdbID)
+        const posterUrl = movie.Poster !== "N/A" ? movie.Poster : "no-image-placeholder.png"
                 
         movieHtml += `
 <div id="movie-list" data-imdbid="${movie.imdbID}">
-    <img class="movie-poster" src="${movie.Poster}">
+    <img class="movie-poster" src="${posterUrl}">
     <div id="movie-info">
         <div id="movie-info-one">
             <h2 class="movie-title">${movie.Title}</h2>
@@ -60,7 +61,7 @@ document.addEventListener('click', function(e) {
         const selectedMovie = addButton.closest("#movie-list")
         const imdbID = selectedMovie.getAttribute("data-imdbid")
         const selectedMovieData = movieArray.find((movie) => movie.imdbID === imdbID)
-        console.log(selectedMovieData)
+        const movieTitle = selectedMovieData.Title
         let isAdded = false
 
         for (let movie of myMovieWatchlist) {
@@ -72,9 +73,9 @@ document.addEventListener('click', function(e) {
         if (!isAdded) {
             myMovieWatchlist.push(selectedMovieData)
             localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist))
-            showNotification(`"${selectedMovieData.Title}" added to your watchlist!`)
+            showNotification(`"${movieTitle}" added to your watchlist!`)
         } else {
-            showNotification(`"${selectedMovieData.Title}" is already in your watchlist!`)
+            showNotification(`"${movieTitle}" is already in your watchlist!`)
         }
     }
 });

@@ -8,10 +8,11 @@ async function renderMyMovieWatchlist() {
     if(myMovieWatchlist.length > 0) {
         for (let movie of myMovieWatchlist) {
         const movieDetails = await getMovieDetails(movie.imdbID)
+        const posterUrl = movie.Poster !== "N/A" ? movie.Poster : "no-image-placeholder.png"
         
         myMovieWatchlistHtml += `
 <div id="movie-list" data-imdbid="${movie.imdbID}">
-    <img class="movie-poster" src="${movie.Poster}">
+    <img class="movie-poster" src="${posterUrl}">
     <div id="movie-info">
         <div id="movie-info-one">
             <h2 class="movie-title">${movie.Title}</h2>
@@ -51,14 +52,16 @@ async function renderMyMovieWatchlist() {
 document.addEventListener('click', function(e) {
     const removeButton = e.target.closest("#remove-button");
     if (removeButton) {
-        const selectedMovie = removeButton.closest("#movie-list")
+        const selectedMovie = removeButton.closest("#movie-list");
         if (selectedMovie) {
-            const selectedMovieIndex = Array.from(selectedMovie.parentNode.children).indexOf(selectedMovie);
+            const imdbID = selectedMovie.getAttribute("data-imdbid");
+            const selectedMovieIndex = myMovieWatchlist.findIndex(movie => movie.imdbID === imdbID);
             if (selectedMovieIndex !== -1) {
+                const movieTitle = myMovieWatchlist[selectedMovieIndex].Title
                 myMovieWatchlist.splice(selectedMovieIndex, 1);
-                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist))
+                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist));
                 renderMyMovieWatchlist();
-                showNotification("Movie deleted from your watchlist!")
+                showNotification(`"${movieTitle}" is deleted from your watchlist!`)
             }
         }
     }
