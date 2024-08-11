@@ -60,6 +60,7 @@ document.addEventListener('click', function(e) {
         const selectedMovie = addButton.closest("#movie-list")
         const imdbID = selectedMovie.getAttribute("data-imdbid")
         const selectedMovieData = movieArray.find((movie) => movie.imdbID === imdbID)
+        console.log(selectedMovieData)
         let isAdded = false
 
         for (let movie of myMovieWatchlist) {
@@ -71,11 +72,22 @@ document.addEventListener('click', function(e) {
         if (!isAdded) {
             myMovieWatchlist.push(selectedMovieData)
             localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist))
+            showNotification(`"${selectedMovieData.Title}" added to your watchlist!`)
         } else {
-            console.log("This movie is already in your watchlist!");
+            showNotification(`"${selectedMovieData.Title}" is already in your watchlist!`)
         }
     }
 });
+
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000); // Hide after 3 seconds
+}
 
 async function getMovieDetails(ID) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${ID}&plot=short&r=json`)

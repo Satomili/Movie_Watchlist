@@ -51,13 +51,14 @@ async function renderMyMovieWatchlist() {
 document.addEventListener('click', function(e) {
     const removeButton = e.target.closest("#remove-button");
     if (removeButton) {
-        const selectedMovie = removeButton.closest("#movie-list");
+        const selectedMovie = removeButton.closest("#movie-list")
         if (selectedMovie) {
             const selectedMovieIndex = Array.from(selectedMovie.parentNode.children).indexOf(selectedMovie);
             if (selectedMovieIndex !== -1) {
                 myMovieWatchlist.splice(selectedMovieIndex, 1);
-                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist));
+                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist))
                 renderMyMovieWatchlist();
+                showNotification("Movie deleted from your watchlist!")
             }
         }
     }
@@ -67,6 +68,16 @@ async function getMovieDetails(ID) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${ID}&plot=short&r=json`)
     const data = await response.json()
     return data
+}
+
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000); // Hide after 3 seconds
 }
 
 renderMyMovieWatchlist()
