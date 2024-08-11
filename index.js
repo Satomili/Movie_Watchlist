@@ -54,6 +54,12 @@ searchButton.addEventListener('click', async ()=> {
     movielistContainer.innerHTML = movieHtml
 })
 
+searchInput.addEventListener('keyup', function(e) {
+    if(e.key === 'Enter') {
+        searchButton.click()
+    } 
+})
+
 document.addEventListener('click', function(e) {
     const addButton = e.target.closest("#add-button");
     if (addButton) {
