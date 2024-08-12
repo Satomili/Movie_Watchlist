@@ -90,6 +90,7 @@ a {
     border-radius: 6px;
     width: 400px;
     margin: auto;
+    margin-top: -20px;
 }
 
 #search-container i {
