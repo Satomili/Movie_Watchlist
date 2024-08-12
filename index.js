@@ -30,7 +30,7 @@ searchForm.addEventListener('submit', async (e)=> {
             <p class="movie-imdbRating"><i class="fa-solid fa-star star-icon"></i> ${movieDetails.imdbRating}</p>
         </div>
         <div id="movie-info-two">
-            <p class="movie-runtime">${movieDetails.Runtime}</p>
+            <p class="movie-runtime"><i class="fa-regular fa-clock"></i> ${movieDetails.Runtime}</p>
             <p class="movie-genre">${movieDetails.Genre}</p>
             <button id="add-button">
                 <i class="fa-solid fa-circle-plus" id="add-icon"></i>

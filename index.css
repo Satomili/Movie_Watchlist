@@ -162,7 +162,6 @@ a {
 #movie-list {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     max-width: 460px;
     gap: 20px;
     margin: 20px auto;
@@ -207,6 +206,10 @@ a {
     max-width: 400px;
 }
 
+.movie-runtime i {
+    display: none;
+}
+
 button {
     display: flex;
     align-items: center;
@@ -245,6 +248,20 @@ hr{
         max-width: 500px;
     }
 
+    #movie-list p {
+        font-size: 0.8em;
+    }
+    
+    .movie-plot {
+        font-size: 0.9em;
+        color: #a5a5a5;
+        max-width: 400px;
+    }
+
+    .movie-runtime i {
+        display: inline-block;
+    }
+
     hr {
         max-width: 500px;
     }
@@ -270,7 +287,11 @@ hr{
 
     .movie-poster {
         width: 150px;
-        height: 100%;
+        height: 223.35px;
+    }
+
+    #movie-list {
+        width: 100%;
     }
     
     .movie-title {
@@ -279,26 +300,25 @@ hr{
         max-width: 290px;
         font-weight: 500;
     }
-    
-    #movie-list p {
-        font-size: 0.65em;
-        margin: 7px 0;
+
+    #movie-info-two {
+        flex-direction: column;
     }
     
-    .movie-plot {
-        font-size: 0.875em;
-        color: #a5a5a5;
-        max-width: 400px;
-    }
-    
-    button {
+    #movie-list button {
         display: flex;
         align-items: center;
         background-color: #121212;
         border: none;
         color: white;
         gap: 5px;
+        border: 1px solid white;
+        border-radius: 6px;
+        width: 40%;
+        margin: 10px 0;
     }
+
+
 }
 
 @media(min-width: 1500px) {
