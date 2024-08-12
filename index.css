@@ -244,6 +244,22 @@ hr{
         font-weight: bold;
     }
 
+    #film-icon {
+        font-size: 6em;
+        color: #2e2e2f;
+    }
+    
+    .msg h2 {
+        color: #2e2e2f;
+        margin: 0;
+        font-size: 1.7em;
+        margin-top: 20px
+    }
+
+    #watchlist-add-button p {
+        font-size: 1.2em;
+    }
+
     #movie-list {
         max-width: 500px;
     }
