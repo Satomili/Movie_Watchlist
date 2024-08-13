@@ -2,6 +2,7 @@ let watchlistContainer = document.getElementById("watchlist-container")
 const apiKey = "5d1ecff"
 let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
 
+// Render the movie watchlist on the page
 async function renderMyMovieWatchlist() {
     let myMovieWatchlistHtml = ""
     
@@ -49,6 +50,7 @@ async function renderMyMovieWatchlist() {
     }
 }
 
+// Event listener for removing movies from watchlist
 document.addEventListener('click', function(e) {
     const removeButton = e.target.closest("#remove-button");
     if (removeButton) {
@@ -67,12 +69,14 @@ document.addEventListener('click', function(e) {
     }
 })
 
+// Function to fetch movie details
 async function getMovieDetails(ID) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${ID}&plot=short&r=json`)
     const data = await response.json()
     return data
 }
 
+// Function to show notification
 function showNotification(message) {
     const notification = document.getElementById('notification');
     notification.innerHTML = `
@@ -90,4 +94,5 @@ function showNotification(message) {
     }, 3000); // Hide after 3 seconds
 }
 
+// Initial rendering of the movie watchlist on page load
 renderMyMovieWatchlist()

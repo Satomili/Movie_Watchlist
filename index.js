@@ -94,6 +94,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// Function to show notification
 function showNotification(message) {
     const notification = document.getElementById('notification');
     notification.innerHTML = `
@@ -113,7 +114,7 @@ function showNotification(message) {
     }, 3000)
 }
 
-// Function to show notification
+// Function to fetch movie details
 async function getMovieDetails(ID) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${ID}&plot=short&r=json`)
     const data = await response.json()
