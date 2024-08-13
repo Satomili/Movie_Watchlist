@@ -52,17 +52,17 @@ async function renderMyMovieWatchlist() {
 
 // Event listener for removing movies from watchlist
 document.addEventListener('click', function(e) {
-    const removeButton = e.target.closest("#remove-button");
+    const removeButton = e.target.closest("#remove-button")
     if (removeButton) {
-        const selectedMovie = removeButton.closest("#movie-list");
+        const selectedMovie = removeButton.closest("#movie-list")
         if (selectedMovie) {
-            const imdbID = selectedMovie.getAttribute("data-imdbid");
-            const selectedMovieIndex = myMovieWatchlist.findIndex(movie => movie.imdbID === imdbID);
+            const imdbID = selectedMovie.getAttribute("data-imdbid")
+            const selectedMovieIndex = myMovieWatchlist.findIndex(movie => movie.imdbID === imdbID)
             if (selectedMovieIndex !== -1) {
                 const movieTitle = myMovieWatchlist[selectedMovieIndex].Title
-                myMovieWatchlist.splice(selectedMovieIndex, 1);
-                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist));
-                renderMyMovieWatchlist();
+                myMovieWatchlist.splice(selectedMovieIndex, 1)
+                localStorage.setItem("myMovieWatchlist", JSON.stringify(myMovieWatchlist))
+                renderMyMovieWatchlist()
                 showNotification(`"${movieTitle}" is deleted from your watchlist!`)
             }
         }
@@ -78,7 +78,7 @@ async function getMovieDetails(ID) {
 
 // Function to show notification
 function showNotification(message) {
-    const notification = document.getElementById('notification');
+    const notification = document.getElementById('notification')
     notification.innerHTML = `
         <div class="notification-content">
             <i class="fa-solid fa-check"></i>
@@ -87,11 +87,11 @@ function showNotification(message) {
             </div>
         </div>
     `
-    notification.classList.add('show');
+    notification.classList.add('show')
 
     setTimeout(() => {
-        notification.classList.remove('show');
-    }, 3000); // Hide after 3 seconds
+        notification.classList.remove('show')
+    }, 3000)
 }
 
 // Initial rendering of the movie watchlist on page load

@@ -172,6 +172,10 @@ a {
     color: white;
 }
 
+#watchlist-container #movie-list:nth-child(n+2) {
+    margin-top: 0;
+}
+
 .movie-poster {
     width: 99px;
     height: 147.41px;
@@ -215,7 +219,8 @@ a {
     display: none;
 }
 
-#movie-list #add-button {
+#movie-list #add-button,
+#movie-list #remove-button {
     display: flex;
     align-items: center;
     background-color: #121212;
@@ -340,7 +345,8 @@ hr{
         flex-direction: column;
     }
     
-    #movie-list #add-button {
+    #movie-list #add-button,
+    #movie-list #remove-button {
         display: flex;
         justify-content: center;
         background-color: #121212;
