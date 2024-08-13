@@ -1,6 +1,7 @@
 // DOM elements
-const searchInput = document.getElementById("search-input")
 const searchForm = document.getElementById("search-container")
+const searchInput = document.getElementById("search-input")
+const searchButton = document.getElementById("search-button")
 let movielistContainer = document.getElementById("movielist-container")
 const searchContainer = document.getElementById("search-container")
 const apiKey = "5d1ecff" // API key for OMDB API
