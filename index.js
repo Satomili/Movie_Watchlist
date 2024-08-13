@@ -1,15 +1,20 @@
+// DOM elements
 const searchInput = document.getElementById("search-input")
 const searchForm = document.getElementById("search-container")
 let movielistContainer = document.getElementById("movielist-container")
 const searchContainer = document.getElementById("search-container")
-const apiKey = "5d1ecff"
-let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
-let movieArray = []
+const apiKey = "5d1ecff" // API key for OMDB API
 
+// Load the movie watchlist from local storage or initialize an empty array
+let myMovieWatchlist = JSON.parse(localStorage.getItem("myMovieWatchlist")) || [];
+let movieArray = [] // Array to store movie data from API
+
+// Event listener for search form submission
 searchForm.addEventListener('submit', async (e)=> {
     e.preventDefault()
     const inputValue = searchInput.value.trim()
 
+    // Fetch movie data from the API
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${inputValue}`)
     const data = await response.json()
         
@@ -56,12 +61,14 @@ searchForm.addEventListener('submit', async (e)=> {
     movielistContainer.innerHTML = movieHtml
 })
 
+// Event listener for Enter key in search input
 searchInput.addEventListener('keyup', function(e) {
     if(e.key === 'Enter') {
         searchButton.click()
     } 
 })
 
+// Event listener for adding movies to watchlist
 document.addEventListener('click', function(e) {
     const addButton = e.target.closest("#add-button");
     if (addButton) {
@@ -106,6 +113,7 @@ function showNotification(message) {
     }, 3000)
 }
 
+// Function to show notification
 async function getMovieDetails(ID) {
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${ID}&plot=short&r=json`)
     const data = await response.json()
